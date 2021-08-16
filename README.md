@@ -3,7 +3,10 @@
 ## Demo 📸
 
 <div align="center" >
-  demo
+ ![localhost_3000_ (3)](https://user-images.githubusercontent.com/82480230/129512256-4101e79f-f27b-41c8-adb2-57b9cfe97f2f.png)
+ ![localhost_3000_ (4)](https://user-images.githubusercontent.com/82480230/129512264-138d4a21-d925-48a7-98c8-91858b26a3eb.png)
+ ![localhost_3000_ (5)](https://user-images.githubusercontent.com/82480230/129512266-bb4695f0-f734-47a2-b9f7-12998c0d1376.png)
+
 </div>
 
 ---
