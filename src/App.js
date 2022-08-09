@@ -9,7 +9,6 @@ import NewsList from './pages/NewsList/NewsList';
 import NewsDetail from './components/NewsDetail';
 import EditNews from './components/EditNews';
 
-
 function App() {
 
   const [newsPost, setNewsPost] = useState([]);
@@ -71,7 +70,13 @@ function App() {
           <Route 
             path='/' 
             exact 
-            render={(props) => (<NewsList {...props} newsPost={newsPost} getNewsId={removeNewsHandler}/>)}
+            render={(props) => (
+              <NewsList 
+              {...props} 
+              newsPost={newsPost} 
+              removeNewsHandler={removeNewsHandler}
+              />
+            )}
           />
 
 
