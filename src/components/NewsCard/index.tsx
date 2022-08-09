@@ -1,13 +1,12 @@
 import moment from 'moment'
 import { Link } from 'react-router-dom';
-import { NewsPost } from '../../pages/NewsList/NewsList';
+import { NewsPost } from '../../pages/NewsList';
 import '../App.css';
 
 interface NewsCardProps {
     newsItem: NewsPost;
     deleteNewsHandler(id: string): void
 }
-
 
 export default function NewsCard({ newsItem, deleteNewsHandler }: NewsCardProps) {
 

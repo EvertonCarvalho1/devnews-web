@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import NewsCard from '../../components/NewsCard/NewsCard';
+import NewsCard from '../../components/NewsCard';
 import '../../components/App.css';
 
 export interface NewsPost {
