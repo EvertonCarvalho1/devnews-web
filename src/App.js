@@ -4,8 +4,8 @@ import {uuid} from 'uuidv4';
 import api from './api/news';
 import './components/App.css';
 import Header from './components/Header';
-import AddNews from './components/AddNews';
-import NewsList from './pages/NewsList/NewsList';
+import AddNews from './pages/AddNews';
+import NewsList from './pages/NewsList';
 import NewsDetail from './components/NewsDetail';
 import EditNews from './components/EditNews';
 
