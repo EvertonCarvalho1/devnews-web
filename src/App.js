@@ -6,8 +6,8 @@ import './components/App.css';
 import Header from './components/Header';
 import AddNews from './pages/AddNews';
 import NewsList from './pages/NewsList';
-import NewsDetail from './components/NewsDetail';
-import EditNews from './components/EditNews';
+import NewsDetail from './pages/NewsDetail';
+import EditNews from './pages/EditNews';
 
 function App() {
 
