@@ -1,82 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import '../../components/App.css';
 
-class EditNews extends React.Component {
+// interface Props extends RouteComponentProps<
+//   { myParamProp?: string }, // this.props.match.params.myParamProp
+//   any, // history
+//   { myStateProp?: string }, // this.props.location.state.myStateProp
+// > {
+//   myNormalProp: boolean;
+// }
 
-        constructor(props) {
-            console.log('aaaaa', props)
-            super(props);
+export default function EditNews (props) {
 
-            const {id, title, subtitle, content} = props.location.state.news;
-            
-            this.state = {
-                id:id,
-                title:title,
-                subtitle:subtitle,
-                content:content,
-            };
-        };
-
-        update = (e) => {
-            e.preventDefault();
-            if(this.state.title === '' && this.state.subtitle === '' && this.state.content === ''){
-                alert('Favor preencher os campos!');
-                return
-            }
-            this.props.updateNewsHandler(this.state);
-            this.setState({title: '', subtitle: '', content: ''});
-            this.props.history.push('/');
-        
+    const {id, title, subtitle, content} = props.location.state.news;
+    
+    const [newsItem, setNewsItem] = useState(() => {
+      
+        return {
+            id:id,
+            title:title,
+            subtitle:subtitle,
+            content:content,
         }
+    })
 
-     render(){
-         return (
-            <div  className='ui  container2'>
-                <h2>Atualizar Notícia</h2>
-                <form className='ui form' onSubmit={this.update}>
-                    <div className='field'>
-                        <label>Título</label>
-                        <input 
-                        type='text' 
-                        name='titulo' 
-                        placeholder='Digite o título' 
-                        value={this.state.title}
-                        onChange={(e) => this.setState({title: e.target.value})}
-                        />
-                    </div>
+    const update = (e) => {
+        e.preventDefault();
+        if(newsItem.title === '' && newsItem.subtitle === '' && newsItem.content === ''){
+            alert('Favor preencher os campos!');
+            return
+        }
+        props.updateNewsHandler(newsItem);
+        setNewsItem({title: '', subtitle: '', content: ''});
+        props.history.push('/');
+    }
 
-                    <div className='field'>
-                        <label>Subtítulo</label>
-                        <input 
-                        type='text' 
-                        name='subtitulo' 
-                        placeholder='Digite o subtítulo'
-                        value={this.state.subtitle}
-                        onChange={(e) => this.setState({subtitle: e.target.value})}
-                        
-                        />
-                    </div>
-                    <div className='field '>
-                        <label>Conteúdo</label>
-                        <input 
-                        className='inputContent'
-                        type='text' 
-                        name='conteudo' 
-                        placeholder='Digite o conteúdo'
-                        value={this.state.content}
-                        onChange={(e) => this.setState({content: e.target.value})}
-                        />
-                    </div>
+    return (
+        <div  className='ui  container2'>
+            <h2>Atualizar Notícia</h2>
+            <form className='ui form' onSubmit={update}>
+                <div className='field'>
+                    <label>Título</label>
+                    <input 
+                    type='text' 
+                    name='titulo' 
+                    placeholder='Digite o título' 
+                    value={newsItem.title}
+                    onChange={(e) => setNewsItem(previousState => ({
+                        ...previousState, title: e.target.value
+                    }))}
+                    />
+                </div>
 
-                    <button className='ui button blue'>Atualizar</button>
-                    <Link to='/'>
-                    <button style={{marginLeft:'10px'}} className='ui button red center'>Cancelar</button>
-                    </Link>
-                </form>
-            </div>
+                <div className='field'>
+                    <label>Subtítulo</label>
+                    <input 
+                    type='text' 
+                    name='subtitulo' 
+                    placeholder='Digite o subtítulo'
+                    value={newsItem.subtitle}
+                    onChange={(e) => setNewsItem(previousState => ({
+                        ...previousState, subtitle: e.target.value
+                    }))}
+                    />
+                </div>
+                <div className='field '>
+                    <label>Conteúdo</label>
+                    <input 
+                    className='inputContent'
+                    type='text' 
+                    name='conteudo' 
+                    placeholder='Digite o conteúdo'
+                    value={newsItem.content}
+                    onChange={(e) => setNewsItem(previousState => ({
+                        ...previousState, content: e.target.value
+                    }))}
+                    />
+                </div>
 
-         );
-     };
-};
-export default EditNews; 
+                <button className='ui button blue'>Atualizar</button>
+                <Link to='/'>
+                <button style={{marginLeft:'10px'}} className='ui button red center'>Cancelar</button>
+                </Link>
+            </form>
+        </div>
+
+     );
+
+
+} 
