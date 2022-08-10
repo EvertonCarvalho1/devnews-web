@@ -1,11 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './App.css';
+import '../../components/App.css';
 
 class EditNews extends React.Component {
+
         constructor(props) {
+            console.log('aaaaa', props)
             super(props);
+
             const {id, title, subtitle, content} = props.location.state.news;
+            
             this.state = {
                 id:id,
                 title:title,
