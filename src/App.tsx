@@ -27,7 +27,6 @@ export default function App() {
       ...news
     };
     const response = await api.post('/news', request);
-    console.log(response);
     setNewsPost([...newsPost, response.data]);
   };
 

@@ -12,7 +12,6 @@ interface NewsDetailProps extends RouteComponentProps<
 
 
 export default function NewsDetail(props: NewsDetailProps) {
-    console.log(props)
 
     const { title, subtitle, content } = props.location.state.news;
 
