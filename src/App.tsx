@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, RouteComponentProps } from 'react-router-dom';
 import { uuid } from 'uuidv4';
 import api from './api/news';
 import './components/App.css';
@@ -10,7 +10,6 @@ import NewsDetail from './pages/NewsDetail';
 import EditNews from './pages/EditNews';
 
 import { NewsPost } from './pages/NewsList';
-
 
 export default function App() {
 
@@ -89,7 +88,7 @@ export default function App() {
 
           <Route
             path='/edit'
-            render={(props) => (<EditNews {...props} updateNewsHandler={updateNewsHandler} />)}
+            render={(props: any) => (<EditNews {...props} updateNewsHandler={updateNewsHandler} />)}
           />
 
           <Route path='/news/:id' component={NewsDetail} />
