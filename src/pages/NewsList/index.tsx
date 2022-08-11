@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import NewsCard from '../../components/NewsCard';
-import '../../components/App.css';
+import { Container } from './styles';
 
 export interface NewsPost {
     content: string;
@@ -33,18 +33,20 @@ export default function NewsList({ removeNewsHandler, newsPost }: NewsListProps)
     });
 
     return (
-        <div className='main container2'>
+        <Container>
+            <div className='main container2'>
 
-            <h2>Listagem de Notícias
-                <Link to='/add'>
-                    <button className='ui button blue right'>Adicionar Notícia</button>
-                </Link>
+                <h2>Listagem de Notícias
+                    <Link to='/add'>
+                        <button className='ui button blue right'>Adicionar Notícia</button>
+                    </Link>
 
-            </h2>
-            <div style={{ textAlign: 'center' }} className='ui celled list'>
-                {renderNewsList}
+                </h2>
+                <div style={{ textAlign: 'center' }} className='ui celled list'>
+                    {renderNewsList}
+                </div>
             </div>
-        </div>
+        </Container>
     );
 
 }
