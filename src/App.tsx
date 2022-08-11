@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import {uuid} from 'uuidv4';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { uuid } from 'uuidv4';
 import api from './api/news';
 import './components/App.css';
 import Header from './components/Header';
@@ -9,17 +9,20 @@ import NewsList from './pages/NewsList';
 import NewsDetail from './pages/NewsDetail';
 import EditNews from './pages/EditNews';
 
-function App() {
+import { NewsPost } from './pages/NewsList';
 
-  const [newsPost, setNewsPost] = useState([]);
+
+export default function App() {
+
+  const [newsPost, setNewsPost] = useState<NewsPost[]>([]);
 
   const retrieveNews = async () => {
     const response = await api.get('/news');
 
     return response.data;
   };
-   
-  const addNewsHandler = async (news) => {
+
+  const addNewsHandler = async (news: any) => {
     const request = {
       id: uuid(),
       ...news
@@ -29,20 +32,20 @@ function App() {
     setNewsPost([...newsPost, response.data]);
   };
 
-  const updateNewsHandler = async (news) => {
+  const updateNewsHandler = async (news: any) => {
     const response = await api.patch(`/news/${news.id}`, news);
 
-    const {id} = response.data;
-      setNewsPost(newsPost.map(news => {
+    const { id } = response.data;
+    setNewsPost(newsPost.map(news => {
 
-        return news.id === id ? {...response.data} : news;
-        
-      })
+      return news.id === id ? { ...response.data } : news;
+
+    })
     );
 
   };
 
-  const removeNewsHandler = async (id) => {
+  const removeNewsHandler = async (id: any) => {
     await api.delete(`/news/${id}`)
     const currentNewsPost = newsPost.filter((news) => {
       return news.id !== id;
@@ -54,7 +57,7 @@ function App() {
   useEffect(() => {
     const getAllNews = async () => {
       const allNews = await retrieveNews();
-      if(allNews) setNewsPost(allNews)
+      if (allNews) setNewsPost(allNews)
     };
 
     getAllNews();
@@ -62,45 +65,43 @@ function App() {
   }, []);
 
   return (
-  
+
     <div className='ui container body'>
       <Router>
-        <Header/>
+        <Header />
         <Switch>
-          <Route 
-            path='/' 
-            exact 
+          <Route
+            path='/'
+            exact
             render={(props) => (
-              <NewsList 
-              {...props} 
-              newsPost={newsPost} 
-              removeNewsHandler={removeNewsHandler}
+              <NewsList
+                {...props}
+                newsPost={newsPost}
+                removeNewsHandler={removeNewsHandler}
               />
             )}
           />
 
-
-          <Route 
-            path='/add' 
-            render={(props) => (<AddNews {...props} addNewsHandler={addNewsHandler}/>)}
+          <Route
+            path='/add'
+            render={(props) => (<AddNews {...props} addNewsHandler={addNewsHandler} />)}
           />
 
-          <Route 
-            path='/edit' 
-            render={(props) => (<EditNews {...props} updateNewsHandler={updateNewsHandler}/>)}
+          <Route
+            path='/edit'
+            render={(props) => (<EditNews {...props} updateNewsHandler={updateNewsHandler} />)}
           />
 
+          <Route path='/news/:id' component={NewsDetail} />
 
-          <Route path='/news/:id' component={NewsDetail}/>
-      
         </Switch>
-      
+
       </Router>
     </div>
 
   );
 }
 
-export default App;
+
 
 

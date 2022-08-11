@@ -11,7 +11,7 @@ interface EditNewsProps extends RouteComponentProps<
     updateNewsHandler(newsItem: Omit<NewsPost, "creationDate">): void;
 }
 
-export default function EditNews(props: EditNewsProps) {
+export default function EditNews(props: any) {
 
     const { id, title, subtitle, content } = props.location.state.news;
 
