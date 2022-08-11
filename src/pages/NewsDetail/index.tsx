@@ -1,14 +1,21 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import '../../components/App.css'
+import { NewsPost } from '../NewsList';
+
+interface NewsDetailProps extends RouteComponentProps<
+    { myParamProp?: string }, // props.match.params.myParamProp
+    any, // history
+    { news: NewsPost } // props.location.state.news
+> {
+}
 
 
-const NewsDetail = (props) => {
-    console.log(props)
+export default function NewsDetail(props: NewsDetailProps) {
 
-    const {title, subtitle, content} = props.location.state.news;
+    const { title, subtitle, content } = props.location.state.news;
 
-    return(
+    return (
         <div className='main textAlignCenter'>
             <div className='ui card centered'>
                 <div className='content'>
@@ -24,6 +31,6 @@ const NewsDetail = (props) => {
             </div>
         </div>
     )
-};
 
-export default NewsDetail;
+}
+

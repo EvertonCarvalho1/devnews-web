@@ -7,6 +7,7 @@ interface EditNewsProps extends RouteComponentProps<
     { myParamProp?: string }, // props.match.params.myParamProp
     any, // history
     { news: NewsPost } // props.location.state.news
+
 > {
     updateNewsHandler(newsItem: Omit<NewsPost, "creationDate">): void;
 }
