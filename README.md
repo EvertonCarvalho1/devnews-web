@@ -27,6 +27,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - React Hooks
 - Moment
 - Axios
+- Styled-component
 
 ---
 
