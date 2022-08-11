@@ -23,10 +23,8 @@ Para ver a **api**, clique aqui: [DevNews-API](https://github.com/EvertonCarvalh
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - React
+- Typescript 
 - React Hooks
-- Node.js
-- Express.js
-- Cors
 - Moment
 - Axios
 
