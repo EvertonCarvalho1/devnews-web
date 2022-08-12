@@ -1,7 +1,7 @@
 <h1 style="text-align: center; font-weight: bold;">DevNews</h1>
 
 ## Demo 📸
-
+ 
 
  ![screen](https://user-images.githubusercontent.com/82480230/129512256-4101e79f-f27b-41c8-adb2-57b9cfe97f2f.png)
  ![screen](https://user-images.githubusercontent.com/82480230/129512264-138d4a21-d925-48a7-98c8-91858b26a3eb.png)
