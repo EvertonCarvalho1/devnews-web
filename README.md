@@ -1,55 +1,46 @@
-<h1 style="text-align: center; font-weight: bold;">DevNews</h1>
+# Getting Started with Create React App
 
-## Demo 📸
- 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
- ![screen](https://user-images.githubusercontent.com/82480230/129512256-4101e79f-f27b-41c8-adb2-57b9cfe97f2f.png)
- ![screen](https://user-images.githubusercontent.com/82480230/129512264-138d4a21-d925-48a7-98c8-91858b26a3eb.png)
- ![screen](https://user-images.githubusercontent.com/82480230/129512266-bb4695f0-f734-47a2-b9f7-12998c0d1376.png)
+## Available Scripts
 
+In the project directory, you can run:
 
+### `npm start`
 
---- 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Sobre o Projeto
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-Esta aplicação fornece tudo o que é necessário para cadastrar e gerenciar notícias.
+### `npm test`
 
-Para ver a **api**, clique aqui: [DevNews-API](https://github.com/EvertonCarvalho1/DevNews-API) <br />
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-### 🛠 Tecnologias
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-As seguintes ferramentas foram usadas na construção do projeto:
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-- React
-- Typescript 
-- React Hooks
-- Moment
-- Axios
-- Styled-component
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
----
+### `npm run eject`
 
-### Pré-requisitos
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### 🎲 Rodando a Aplicação
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-```bash
-# Clone este repositório
-$ git clone https://github.com/EvertonCarvalho1/DevNews-WEB.git
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-# Acesse a pasta do projeto no terminal/cmd
-$ cd DevNews-WEB
+## Learn More
 
-# Instale as dependências
-$ npm install
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-# Execute a aplicação em modo de desenvolvimento
-$ npm start
-
-```
+To learn React, check out the [React documentation](https://reactjs.org/).
