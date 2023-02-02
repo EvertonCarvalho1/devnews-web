@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, RouteComponentProps } from 'react-router-dom';
-import { uuid } from 'uuidv4';
 import api from './api/news';
 import Header from './components/Header';
 import AddNews from './pages/AddNews';
@@ -22,7 +21,7 @@ export default function App() {
 
   const addNewsHandler = async (news: any) => {
     const request = {
-      id: uuid(),
+      id: 'uuid()',
       ...news
     };
     const response = await api.post('/news', request);
