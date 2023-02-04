@@ -15,7 +15,7 @@ interface NewsListProps {
     newsPost: Array<NewsPost>;
 }
 
-export default function NewsList({ removeNewsHandler, newsPost }: NewsListProps) {
+export function NewsList({ removeNewsHandler, newsPost }: NewsListProps) {
 
     const deleteNewsHandler = (id: any) => {
         removeNewsHandler(id);
