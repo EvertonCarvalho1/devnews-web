@@ -8,37 +8,37 @@ interface AddNewsProps {
     history: History;
 }
 
-export default function AddNews({ addNewsHandler, history }: AddNewsProps) {
+export function AddNews() {
 
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
     const [content, setContent] = useState('');
 
-    const add = (e: FormEvent) => {
-        e.preventDefault();
+    // const add = (e: FormEvent) => {
+    //     e.preventDefault();
 
-        if (title === '' && subtitle === '' && content === '') {
-            alert('Favor preencher os campos!');
-            return
-        }
+    //     if (title === '' && subtitle === '' && content === '') {
+    //         alert('Favor preencher os campos!');
+    //         return
+    //     }
 
-        addNewsHandler({
-            title: title,
-            subtitle: subtitle,
-            content: content,
-        });
+    //     addNewsHandler({
+    //         title: title,
+    //         subtitle: subtitle,
+    //         content: content,
+    //     });
 
-        setTitle('');
-        setSubtitle('');
-        setContent('');
-        history.push('/');
-    }
+    //     setTitle('');
+    //     setSubtitle('');
+    //     setContent('');
+    //     history.push('/');
+    // }
 
     return (
         <Container>
-            <div className='ui  container2'>
+            <div className='container2'>
                 <h2>Adicionar Notícia</h2>
-                <form className='ui form' onSubmit={add}>
+                <form className='ui form' onSubmit={() => { }}>
                     <div className='field'>
                         <label>Título</label>
                         <input

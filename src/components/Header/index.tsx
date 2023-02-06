@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from './styles';
 
 
-export default function Header() {
+export function Header() {
 
   return (
     <Container>

@@ -1,19 +1,12 @@
 import React from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NewsPost } from '../NewsList';
 import { Container } from './styles';
 
-interface NewsDetailProps extends RouteComponentProps<
-    { myParamProp?: string }, // props.match.params.myParamProp
-    any, // history
-    { news: NewsPost } // props.location.state.news
-> {
-}
 
+export function NewsDetail(props: any) {
 
-export default function NewsDetail(props: NewsDetailProps) {
-
-    const { title, subtitle, content } = props.location.state.news;
+    const { title, subtitle, content } = props.location.state.news
 
     return (
         <Container>

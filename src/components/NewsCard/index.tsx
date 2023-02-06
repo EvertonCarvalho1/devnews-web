@@ -1,19 +1,19 @@
 import moment from 'moment'
 import { Link } from 'react-router-dom';
-import { NewsPost } from '../../pages/NewsList';
+import { News } from '../../hooks/news';
 
 import { Container } from './styles';
 
 interface NewsCardProps {
-    newsItem: NewsPost;
+    newsItem: News;
     deleteNewsHandler(id: string): void
 }
 
 export default function NewsCard({ newsItem, deleteNewsHandler }: NewsCardProps) {
 
 
-    const { id, title, subtitle, content, creationDate } = newsItem;
-    const dataBr = moment(creationDate).format('DD/MM/YYYY');
+    const { id, title, subtitle, content, created_at, updated_at } = newsItem;
+    const dataBr = moment(created_at).format('DD/MM/YYYY');
 
     return (
         <Container>
@@ -21,9 +21,9 @@ export default function NewsCard({ newsItem, deleteNewsHandler }: NewsCardProps)
 
             <div className='item'>
                 <div className='content'>
-                    <Link to={{ pathname: `/news/${id}`, state: { news: newsItem } }}>
+                    {/* <Link to={{ pathname: `/news/${id}`, state: { news: newsItem } }}>
                         <div className='title'>{title}</div>
-                    </Link>
+                    </Link> */}
                     <div className='subtitle'>{subtitle}</div>
                     <div className='content'>{content}</div>
                     <div className='content'>Data da publicação: {dataBr}</div>
@@ -35,11 +35,11 @@ export default function NewsCard({ newsItem, deleteNewsHandler }: NewsCardProps)
                     onClick={() => deleteNewsHandler(id)}
                 ></i>
 
-                <Link to={{ pathname: `/edit/${id}`, state: { news: newsItem } }}>
+                {/* <Link to={{ pathname: `/edit/${id}`, state: { news: newsItem } }}>
                     <i className='edit alternate outline icon'
                         style={{ color: 'blue', marginTop: '7px' }}
                     ></i>
-                </Link>
+                </Link> */}
             </div>
         </Container>
     )
