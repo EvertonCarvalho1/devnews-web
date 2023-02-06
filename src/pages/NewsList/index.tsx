@@ -15,22 +15,22 @@ interface NewsListProps {
     newsPost: Array<NewsPost>;
 }
 
-export function NewsList({ removeNewsHandler, newsPost }: NewsListProps) {
+export function NewsList() {
 
-    const deleteNewsHandler = (id: any) => {
-        removeNewsHandler(id);
-    };
+    // const deleteNewsHandler = (id: any) => {
+    //     removeNewsHandler(id);
+    // };
 
-    const renderNewsList = newsPost.map((newsItem) => {
+    // const renderNewsList = newsPost.map((newsItem) => {
 
-        return (
-            <NewsCard
-                newsItem={newsItem}
-                deleteNewsHandler={deleteNewsHandler}
-                key={newsItem.id}
-            />
-        )
-    });
+    //     return (
+    //         <NewsCard
+    //             newsItem={newsItem}
+    //             deleteNewsHandler={deleteNewsHandler}
+    //             key={newsItem.id}
+    //         />
+    //     )
+    // });
 
     return (
         <Container>
@@ -43,7 +43,7 @@ export function NewsList({ removeNewsHandler, newsPost }: NewsListProps) {
 
                 </h2>
                 <div style={{ textAlign: 'center' }} className='ui celled list'>
-                    {renderNewsList}
+                    {/* {renderNewsList} */}
                 </div>
             </div>
         </Container>

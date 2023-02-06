@@ -1,19 +1,11 @@
 import React, { FormEvent, useState } from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NewsPost } from '../NewsList';
 
 import { Container } from './styles';
 
-interface EditNewsProps extends RouteComponentProps<
-    { myParamProp?: string }, // props.match.params.myParamProp
-    any, // history
-    { news: NewsPost } // props.location.state.news
 
-> {
-    updateNewsHandler(newsItem: Omit<NewsPost, "creationDate">): void;
-}
-
-export default function EditNews(props: EditNewsProps) {
+export function EditNews(props: any) {
 
     const { id, title, subtitle, content } = props.location.state.news;
 
