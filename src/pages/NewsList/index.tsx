@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import NewsCard from '../../components/NewsCard';
 import { Container } from './styles';
+import { useNews } from '../../hooks/news'
+import { useEffect } from 'react';
 
 export interface NewsPost {
     content: string;
@@ -17,20 +19,26 @@ interface NewsListProps {
 
 export function NewsList() {
 
+    const { listNews, newsData } = useNews();
+
+    useEffect(() => {
+        listNews();
+    }, [listNews])
+
     // const deleteNewsHandler = (id: any) => {
     //     removeNewsHandler(id);
     // };
 
-    // const renderNewsList = newsPost.map((newsItem) => {
+    const renderNewsList = newsData.map((newsItem) => {
 
-    //     return (
-    //         <NewsCard
-    //             newsItem={newsItem}
-    //             deleteNewsHandler={deleteNewsHandler}
-    //             key={newsItem.id}
-    //         />
-    //     )
-    // });
+        return (
+            <NewsCard
+                newsItem={newsItem}
+                deleteNewsHandler={() => { }}
+                key={newsItem.id}
+            />
+        )
+    });
 
     return (
         <Container>
@@ -46,7 +54,7 @@ export function NewsList() {
 
 
                 <div style={{ textAlign: 'center' }} className='ui celled list'>
-                    {/* {renderNewsList} */}
+                    {renderNewsList}
                 </div>
 
             </div>
