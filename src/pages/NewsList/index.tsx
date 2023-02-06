@@ -34,17 +34,21 @@ export function NewsList() {
 
     return (
         <Container>
-            <div className='main container2'>
+            <div className='main'>
 
-                <h2>Listagem de Notícias
-                    <Link to='/add'>
+                <div className='container2'>
+                    <h1>Listagem de Notícias</h1>
+
+                    <Link to='/news/create'>
                         <button className='ui button blue right'>Adicionar Notícia</button>
                     </Link>
+                </div>
 
-                </h2>
+
                 <div style={{ textAlign: 'center' }} className='ui celled list'>
                     {/* {renderNewsList} */}
                 </div>
+
             </div>
         </Container>
     );

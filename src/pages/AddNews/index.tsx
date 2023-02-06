@@ -36,7 +36,7 @@ export function AddNews() {
 
     return (
         <Container>
-            <div className='ui  container2'>
+            <div className='container2'>
                 <h2>Adicionar Notícia</h2>
                 <form className='ui form' onSubmit={() => { }}>
                     <div className='field'>
