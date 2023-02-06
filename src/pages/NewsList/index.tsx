@@ -37,7 +37,7 @@ export function NewsList() {
             <div className='main'>
 
                 <div className='container2'>
-                    <h1>Listagem de Notícias</h1>
+                    <h1>Feed de Notícias</h1>
 
                     <Link to='/news/create'>
                         <button className='ui button blue right'>Adicionar Notícia</button>

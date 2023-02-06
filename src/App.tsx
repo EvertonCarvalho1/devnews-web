@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Header } from "./components/Header";
 import RoutesApp from "./routes";
 
-const App: React.FC = () => {
+export function App() {
   return (
     <>
       <BrowserRouter>
@@ -13,4 +13,4 @@ const App: React.FC = () => {
     </>
   );
 };
-export default App;
+
