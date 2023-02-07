@@ -26,6 +26,7 @@ interface NewsContextData {
     addNews(newsPost: NewsPost): Promise<void>;
     newsDetail(id: string): Promise<void>;
     newsDetailData: News;
+    deleteNews(id: string): Promise<void>;
 };
 
 const NewsContext = createContext<NewsContextData>({} as NewsContextData);
@@ -59,13 +60,22 @@ function NewsProvider({ children }: NewsProviderProps) {
         }
     }, []);
 
+    const deleteNews = useCallback(async (id: string) => {
+        const response = await api.delete(`/news/delete?news_id=${id}`);
+
+        if (response.status === 200) {
+            listNews();
+        }
+    }, [listNews]);
+
     return (
         <NewsContext.Provider value={{
             newsData,
             listNews,
             addNews,
             newsDetail,
-            newsDetailData
+            newsDetailData,
+            deleteNews
         }}>
             {children}
         </NewsContext.Provider>

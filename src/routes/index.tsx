@@ -10,7 +10,6 @@ import { Master } from '../components/Master'
 
 const RoutesApp: React.FC = () => {
     return (
-
         <Master>
             <Routes>
                 <Route path="/" element={<NewsList />} />

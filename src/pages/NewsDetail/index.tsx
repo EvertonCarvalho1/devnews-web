@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { NewsPost } from '../NewsList';
 import { Container } from './styles';
 import { useNews } from '../../hooks/news';
 

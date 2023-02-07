@@ -34,7 +34,6 @@ export function NewsList() {
         return (
             <NewsCard
                 newsItem={newsItem}
-                deleteNewsHandler={() => { }}
                 key={newsItem.id}
             />
         )
