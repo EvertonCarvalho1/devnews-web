@@ -5,9 +5,12 @@ import { Container } from './styles';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from "formik";
+import { useNews } from '../../hooks/news'
+import { toast } from 'react-toastify';
 
 export function AddNews() {
     const navigate = useNavigate();
+    const { addNews } = useNews();
 
     const formik = useFormik({
         initialValues: {
@@ -18,21 +21,28 @@ export function AddNews() {
         validationSchema: yup.object({
             title: yup
                 .string()
-                .required("O campo é obrigatório."),
+                .required("O campo título é obrigatório."),
             subtitle: yup
                 .string()
-                .required("O campo é obrigatório."),
+                .required("O campo subtítulo é obrigatório."),
             content: yup
                 .string()
-                .required("O campo é obrigatório."),
+                .required("O campo conteúdo é obrigatório."),
         }),
-        onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: async (values) => {
+            try {
+                await addNews(values);
+                toast.success('Noticia adicionada!');
+                navigate('/');
+            } catch (err) {
+                toast.error('Ocorreu um erro ao adicionar a noticia.');
+            }
         },
     });
 
     return (
         <Container>
+
             <div className='container2'>
                 <h2>Adicionar Notícia</h2>
                 <form
@@ -50,7 +60,7 @@ export function AddNews() {
                         />
 
                         {formik.touched.title && formik.errors.title ? (
-                            <div>{formik.errors.title}</div>
+                            <div className='errorMessage'>{formik.errors.title}</div>
                         ) : null}
 
                     </div>
@@ -66,7 +76,7 @@ export function AddNews() {
                         />
 
                         {formik.touched.subtitle && formik.errors.subtitle ? (
-                            <div>{formik.errors.subtitle}</div>
+                            <div className='errorMessage'>{formik.errors.subtitle}</div>
                         ) : null}
                     </div>
                     <div className='field '>
@@ -80,7 +90,7 @@ export function AddNews() {
                             value={formik.values.content}
                         />
                         {formik.touched.content && formik.errors.content ? (
-                            <div>{formik.errors.content}</div>
+                            <div className='errorMessage'>{formik.errors.content}</div>
                         ) : null}
 
                     </div>

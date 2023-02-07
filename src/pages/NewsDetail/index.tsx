@@ -1,21 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { NewsPost } from '../NewsList';
 import { Container } from './styles';
+import { useNews } from '../../hooks/news';
 
 
-export function NewsDetail(props: any) {
+export function NewsDetail() {
+    const { newsDetail, newsDetailData } = useNews();
+    const { state } = useLocation();
 
-    const { title, subtitle, content } = props.location.state.news
+    useEffect(() => {
+        newsDetail(state.news_id);
+    }, [newsDetail, state]);
 
     return (
         <Container>
             <div className='main textAlignCenter'>
                 <div className='ui card centered'>
                     <div className='content'>
-                        <div className='title'>{title}</div>
-                        <div className='subtitle'>{subtitle}</div>
-                        <div className='content'>{content}</div>
+                        <div className='title'>{newsDetailData.title}</div>
+                        <div className='subtitle'>{newsDetailData.subtitle}</div>
+                        <div className='content'>{newsDetailData.content}</div>
                     </div>
                 </div>
                 <div className='center-div'>

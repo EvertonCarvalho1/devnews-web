@@ -22,8 +22,10 @@ interface NewsProviderProps {
 
 interface NewsContextData {
     newsData: Array<News>;
-    listNews(): Promise<void>
-
+    listNews(): Promise<void>;
+    addNews(newsPost: NewsPost): Promise<void>;
+    newsDetail(id: string): Promise<void>;
+    newsDetailData: News;
 };
 
 const NewsContext = createContext<NewsContextData>({} as NewsContextData);
@@ -31,6 +33,7 @@ const NewsContext = createContext<NewsContextData>({} as NewsContextData);
 function NewsProvider({ children }: NewsProviderProps) {
 
     const [newsData, setNewsData] = useState<News[]>([]);
+    const [newsDetailData, setNewsDetailData] = useState<News>({} as News);
 
     const listNews = useCallback(async () => {
         const response = await api.get('/news');
@@ -43,20 +46,27 @@ function NewsProvider({ children }: NewsProviderProps) {
     }, [setNewsData]);
 
     const addNews = useCallback(async (newsPost: NewsPost) => {
-        try {
-            await api.post('/news/create', newsPost);
+        await api.post('/news/create', newsPost);
+    }, []);
 
-        } catch (err) {
-            alert(`Ocorreu um erro ${err}`)
+    const newsDetail = useCallback(async (id: string) => {
+        const response = await api.get(`/news/details?news_id=${id}`);
+
+        if (response.status === 200) {
+            setNewsDetailData(response.data);
+        } else {
+            setNewsDetailData({} as News);
         }
     }, []);
 
-
-
-
     return (
-        <NewsContext.Provider value={{ newsData, listNews }}>
-            {/* passamos o children pra que todos os filhos do AuthProvider sejam repassados como filhos do AuthContext.Provider */}
+        <NewsContext.Provider value={{
+            newsData,
+            listNews,
+            addNews,
+            newsDetail,
+            newsDetailData
+        }}>
             {children}
         </NewsContext.Provider>
     )

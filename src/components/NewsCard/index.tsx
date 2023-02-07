@@ -17,13 +17,11 @@ export default function NewsCard({ newsItem, deleteNewsHandler }: NewsCardProps)
 
     return (
         <Container>
-
-
             <div className='item'>
                 <div className='content'>
-                    {/* <Link to={{ pathname: `/news/${id}`, state: { news: newsItem } }}>
+                    <Link to={`/news/details`} state={{ news_id: id }}>
                         <div className='title'>{title}</div>
-                    </Link> */}
+                    </Link>
                     <div className='subtitle'>{subtitle}</div>
                     <div className='content'>{content}</div>
                     <div className='content'>Data da publicação: {dataBr}</div>
@@ -33,7 +31,9 @@ export default function NewsCard({ newsItem, deleteNewsHandler }: NewsCardProps)
                 <i className='trash alternate outline icon'
                     style={{ color: 'red', marginTop: '7px', marginLeft: '10px' }}
                     onClick={() => deleteNewsHandler(id)}
-                ></i>
+                >
+
+                </i>
 
                 {/* <Link to={{ pathname: `/edit/${id}`, state: { news: newsItem } }}>
                     <i className='edit alternate outline icon'
