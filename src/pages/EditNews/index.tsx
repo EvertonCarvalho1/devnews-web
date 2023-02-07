@@ -1,5 +1,4 @@
-import React, { useState, FormEvent, useRef } from 'react';
-import { History } from 'history';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from './styles';
 import { useNavigate } from 'react-router-dom';

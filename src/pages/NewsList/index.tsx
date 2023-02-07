@@ -12,11 +12,6 @@ export interface NewsPost {
     title: string;
 }
 
-interface NewsListProps {
-    removeNewsHandler(id: string): void;
-    newsPost: Array<NewsPost>;
-}
-
 export function NewsList() {
 
     const { listNews, newsData } = useNews();
