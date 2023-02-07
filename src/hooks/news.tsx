@@ -10,6 +10,12 @@ export interface News {
     updated_at: string;
 }
 
+export interface NewsPost {
+    title: string;
+    subtitle: string;
+    content: string;
+}
+
 interface NewsProviderProps {
     children: ReactNode;
 }
@@ -17,6 +23,7 @@ interface NewsProviderProps {
 interface NewsContextData {
     newsData: Array<News>;
     listNews(): Promise<void>
+
 };
 
 const NewsContext = createContext<NewsContextData>({} as NewsContextData);
@@ -34,6 +41,17 @@ function NewsProvider({ children }: NewsProviderProps) {
             setNewsData([]);
         }
     }, [setNewsData]);
+
+    const addNews = useCallback(async (newsPost: NewsPost) => {
+        try {
+            await api.post('/news/create', newsPost);
+
+        } catch (err) {
+            alert(`Ocorreu um erro ${err}`)
+        }
+    }, []);
+
+
 
 
     return (
