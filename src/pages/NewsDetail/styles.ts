@@ -1,45 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    
-.main {
-  margin-top: 5em;
+.main{
+  width: 100%;
 }
-
-.center {
+.card{
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
   justify-content: center;
   padding: 10px;
 }
-
-.ui.search input {
-  width: 100%;
-  border-radius: 0 !important;
-}
-
-.item {
-  padding: 15px 0px !important;
-}
-
-i.icon {
-  float: right;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.right {
-  float: right !important;
-}
-.center-div {
-  text-align: center;
-}
-
-.container2{
-  max-width: 600px;
-  margin: 5em auto 2em auto;
-}
-
-.inputContent{
-  height: 100px;
+.center-div{
+  display: flex;
+  justify-content: center;
 }
 
 .title{
@@ -65,18 +39,4 @@ i.icon {
   line-height: 22px;
 
 }
-
-.textAlignCenter{
-  text-align: center;
-}
-
-.header{
-  font-size: 27px;
-  font-weight: bold;
-}
-
-
-
-
-
 `;

@@ -43,13 +43,14 @@ export default function NewsCard({ newsItem }: NewsCardProps) {
 
                 </i>
 
-                {/* <Link to={{ pathname: `/edit/${id}`, state: { news: newsItem } }}>
+                <Link to={`/news/update`} state={{ news_id: id }} >
                     <i className='edit alternate outline icon'
                         style={{ color: 'blue', marginTop: '7px' }}
-                    ></i>
-                </Link> */}
+                    >
+                    </i>
+                </Link>
             </div>
-        </Container>
+        </Container >
     )
 
 

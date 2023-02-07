@@ -21,11 +21,12 @@ export function NewsDetail() {
                         <div className='subtitle'>{newsDetailData.subtitle}</div>
                         <div className='content'>{newsDetailData.content}</div>
                     </div>
-                </div>
-                <div className='center-div'>
-                    <Link to='/'>
-                        <button className='ui button blue center'>Voltar</button>
-                    </Link>
+
+                    <div className='center-div'>
+                        <Link to='/'>
+                            <button className='ui button blue center'>Voltar</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </Container>
