@@ -1,80 +1,105 @@
-import React, { FormEvent, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { NewsPost } from '../NewsList';
-
 import { Container } from './styles';
+import { useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
+import { useFormik } from "formik";
+import { useNews } from '../../hooks/news'
+import { toast } from 'react-toastify';
 
+export function EditNews() {
+    const navigate = useNavigate();
+    const { addNews } = useNews();
 
-export function EditNews(props: any) {
-
-    const { id, title, subtitle, content } = props.location.state.news;
-
-    const [newsItem, setNewsItem] = useState<Omit<NewsPost, "creationDate">>(() => {
-
-        return {
-            id: id,
-            title: title,
-            subtitle: subtitle,
-            content: content,
-        }
-    })
-
-    const update = (e: FormEvent) => {
-        e.preventDefault();
-        if (newsItem.title === '' && newsItem.subtitle === '' && newsItem.content === '') {
-            alert('Favor preencher os campos!');
-            return
-        }
-        props.updateNewsHandler(newsItem);
-        setNewsItem({ id: '', title: '', subtitle: '', content: '' });
-        props.history.push('/');
-    }
+    const formik = useFormik({
+        initialValues: {
+            title: "",
+            subtitle: "",
+            content: "",
+        },
+        validationSchema: yup.object({
+            title: yup
+                .string()
+                .required("O campo título é obrigatório."),
+            subtitle: yup
+                .string()
+                .required("O campo subtítulo é obrigatório."),
+            content: yup
+                .string()
+                .required("O campo conteúdo é obrigatório."),
+        }),
+        onSubmit: async (values) => {
+            try {
+                await addNews(values);
+                toast.success('Noticia adicionada!');
+                navigate('/');
+            } catch (err) {
+                toast.error('Ocorreu um erro ao adicionar a noticia.');
+            }
+        },
+    });
 
     return (
         <Container>
-            <div className='ui  container2'>
-                <h2>Atualizar Notícia</h2>
-                <form className='ui form' onSubmit={update}>
+
+            <div className='container2'>
+                <h2>Adicionar Notícia</h2>
+                <form
+                    className='ui form'
+                    onSubmit={formik.handleSubmit}
+                >
                     <div className='field'>
                         <label>Título</label>
                         <input
                             type='text'
-                            name='titulo'
+                            name='title'
                             placeholder='Digite o título'
-                            value={newsItem.title}
-                            onChange={(e) => setNewsItem(previousState => ({
-                                ...previousState, title: e.target.value
-                            }))}
+                            onChange={formik.handleChange}
+                            value={formik.values.title}
                         />
+
+                        {formik.touched.title && formik.errors.title ? (
+                            <div className='errorMessage'>{formik.errors.title}</div>
+                        ) : null}
+
                     </div>
 
                     <div className='field'>
                         <label>Subtítulo</label>
                         <input
                             type='text'
-                            name='subtitulo'
+                            name='subtitle'
                             placeholder='Digite o subtítulo'
-                            value={newsItem.subtitle}
-                            onChange={(e) => setNewsItem(previousState => ({
-                                ...previousState, subtitle: e.target.value
-                            }))}
+                            onChange={formik.handleChange}
+                            value={formik.values.subtitle}
                         />
+
+                        {formik.touched.subtitle && formik.errors.subtitle ? (
+                            <div className='errorMessage'>{formik.errors.subtitle}</div>
+                        ) : null}
                     </div>
                     <div className='field '>
                         <label>Conteúdo</label>
                         <input
                             className='inputContent'
                             type='text'
-                            name='conteudo'
+                            name='content'
                             placeholder='Digite o conteúdo'
-                            value={newsItem.content}
-                            onChange={(e) => setNewsItem(previousState => ({
-                                ...previousState, content: e.target.value
-                            }))}
+                            onChange={formik.handleChange}
+                            value={formik.values.content}
                         />
+                        {formik.touched.content && formik.errors.content ? (
+                            <div className='errorMessage'>{formik.errors.content}</div>
+                        ) : null}
+
                     </div>
 
-                    <button className='ui button blue'>Atualizar</button>
+                    <button
+                        className='ui button blue'
+                        type='submit'
+                    >
+                        Editar
+                    </button>
                     <Link to='/'>
                         <button style={{ marginLeft: '10px' }} className='ui button red center'>Cancelar</button>
                     </Link>
@@ -84,5 +109,4 @@ export function EditNews(props: any) {
 
     );
 
-
-} 
+}
