@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Container } from './styles';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 export function EditNews() {
     const navigate = useNavigate();
     const { state } = useLocation();
-    const { addNews, newsData } = useNews();
+    const { newsData, editNews } = useNews();
 
 
     const newsFilteredById = useMemo(() => {
@@ -39,9 +39,11 @@ export function EditNews() {
         }),
         onSubmit: async (values) => {
             try {
-                await addNews(values);
-                toast.success('Noticia editada!');
-                navigate('/');
+                if (newsFilteredById?.id) {
+                    await editNews({ ...values, news_id: newsFilteredById.id });
+                    toast.success('Noticia editada!');
+                    navigate('/');
+                }
             } catch (err) {
                 toast.error('Ocorreu um erro ao editar a noticia.');
             }
