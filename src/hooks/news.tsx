@@ -16,6 +16,13 @@ export interface NewsPost {
     content: string;
 }
 
+export interface NewsEdit {
+    news_id: string;
+    title: string;
+    subtitle: string;
+    content: string;
+}
+
 interface NewsProviderProps {
     children: ReactNode;
 }
@@ -27,6 +34,7 @@ interface NewsContextData {
     newsDetail(id: string): Promise<void>;
     newsDetailData: News;
     deleteNews(id: string): Promise<void>;
+    editNews(newsEdit: NewsEdit): Promise<void>
 };
 
 const NewsContext = createContext<NewsContextData>({} as NewsContextData);
@@ -60,6 +68,14 @@ function NewsProvider({ children }: NewsProviderProps) {
         }
     }, []);
 
+    const editNews = useCallback(async (newsEdit: NewsEdit) => {
+        const response = await api.put(`/news/update`, newsEdit);
+
+        if (response.status === 200) {
+            listNews();
+        }
+    }, [listNews]);
+
     const deleteNews = useCallback(async (id: string) => {
         const response = await api.delete(`/news/delete?news_id=${id}`);
 
@@ -75,7 +91,8 @@ function NewsProvider({ children }: NewsProviderProps) {
             addNews,
             newsDetail,
             newsDetailData,
-            deleteNews
+            deleteNews,
+            editNews
         }}>
             {children}
         </NewsContext.Provider>

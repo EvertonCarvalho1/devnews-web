@@ -18,11 +18,7 @@ export function NewsList() {
 
     useEffect(() => {
         listNews();
-    }, [listNews])
-
-    // const deleteNewsHandler = (id: any) => {
-    //     removeNewsHandler(id);
-    // };
+    }, [listNews]);
 
     const renderNewsList = newsData.map((newsItem) => {
 

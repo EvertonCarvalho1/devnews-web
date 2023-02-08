@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Container } from './styles';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
@@ -9,13 +9,22 @@ import { toast } from 'react-toastify';
 
 export function EditNews() {
     const navigate = useNavigate();
-    const { addNews } = useNews();
+    const { state } = useLocation();
+    const { newsData, editNews } = useNews();
+
+
+    const newsFilteredById = useMemo(() => {
+        return newsData.find((item) => {
+            return item.id === state.news_id;
+        });
+    }, [newsData, state]);
+
 
     const formik = useFormik({
         initialValues: {
-            title: "",
-            subtitle: "",
-            content: "",
+            title: newsFilteredById?.title === undefined ? '' : newsFilteredById.title,
+            subtitle: newsFilteredById?.subtitle === undefined ? '' : newsFilteredById.subtitle,
+            content: newsFilteredById?.content === undefined ? '' : newsFilteredById.content
         },
         validationSchema: yup.object({
             title: yup
@@ -30,11 +39,13 @@ export function EditNews() {
         }),
         onSubmit: async (values) => {
             try {
-                await addNews(values);
-                toast.success('Noticia adicionada!');
-                navigate('/');
+                if (newsFilteredById?.id) {
+                    await editNews({ ...values, news_id: newsFilteredById.id });
+                    toast.success('Noticia editada!');
+                    navigate('/');
+                }
             } catch (err) {
-                toast.error('Ocorreu um erro ao adicionar a noticia.');
+                toast.error('Ocorreu um erro ao editar a noticia.');
             }
         },
     });
@@ -43,7 +54,7 @@ export function EditNews() {
         <Container>
 
             <div className='container2'>
-                <h2>Adicionar Notícia</h2>
+                <h2>Editar Notícia</h2>
                 <form
                     className='ui form'
                     onSubmit={formik.handleSubmit}
