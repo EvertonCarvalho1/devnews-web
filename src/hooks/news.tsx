@@ -23,7 +23,6 @@ export interface NewsEdit {
     content: string;
 }
 
-
 interface NewsProviderProps {
     children: ReactNode;
 }
