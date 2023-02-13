@@ -15,19 +15,22 @@
 
 Esta aplicação fornece tudo o que é necessário para cadastrar e gerenciar notícias.
 
-Para ver a **api**, clique aqui: [DevNews-API](https://github.com/EvertonCarvalho1/DevNews-API) <br />
+Para ver a **api**, clique aqui: [devnews-api](https://github.com/EvertonCarvalho1/devnews-api) <br />
 
 
 ### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- React
+- ReactJS
 - Typescript 
 - React Hooks
 - Moment
 - Axios
+- React-toastify
+- Formik
 - Styled-component
+- Yup
 
 ---
 
@@ -44,12 +47,12 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 $ git clone https://github.com/EvertonCarvalho1/DevNews-WEB.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd DevNews-WEB
+$ cd devnews-web
 
 # Instale as dependências
-$ npm install
+$ yarn
 
 # Execute a aplicação em modo de desenvolvimento
-$ npm start
+$ yarn start
 
 ```
