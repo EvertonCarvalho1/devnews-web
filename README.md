@@ -1,4 +1,4 @@
-<h1 style="text-align: center; font-weight: bold;">DevNews</h1>
+<h1 style="text-align: center; font-weight: bold;">DevNews-WEB</h1>
 
 ## Demo 📸
  
@@ -31,6 +31,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - Formik
 - Styled-component
 - Yup
+- Typescript
 
 ---
 
